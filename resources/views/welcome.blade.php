@@ -30,11 +30,11 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr v-for="(order, OIndex) in customer.orders" :key="OIndex">
+                                    <tr v-if="customer.orders && customer.orders.length > 0" v-for="(order, OIndex) in customer.orders" :key="OIndex">
                                         <td>@{{order.order_number}}</td>
                                         <td>
                                             <ol>
-                                                <li v-for="(item, itemIndex) in order.items" :key="itemIndex">@{{item.name}}</li>
+                                                <li v-if="order.items && order.items.length > 0" v-for="(item, itemIndex) in order.items" :key="itemIndex">@{{item.name}}</li>
                                             </ol>
                                         </td>
                                         <td>@{{formattedDate(order.created_at)}}</td>
